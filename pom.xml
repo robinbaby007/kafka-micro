@@ -16,6 +16,7 @@
         <module>order</module>
         <module>notify</module>
         <module>eureka</module>
+        <module>gateway</module>
     </modules>
 	<name/>
 	<description/>
