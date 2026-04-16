@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eee9907-ed4b-4a4e-ae0b-38cd02a2866d" name="Changes" comment="Add user endpoints and validation">
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/security/SecurityConfig.java" afterDir="false" />
+    <list default="true" id="3eee9907-ed4b-4a4e-ae0b-38cd02a2866d" name="Changes" comment="Implement password hashing and add security configuration">
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notify/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/notify/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/order/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/user/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/GatewayApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,15 +108,17 @@
           <value>
             <map>
               <entry key="EurekaApplication" value="STOPPED" />
-              <entry key="GatewayApplication" value="STOPPED" />
-              <entry key="UserApplication" value="FAILED" />
+              <entry key="GatewayApplication" value="FAILED" />
+              <entry key="NotifyApplication" value="STOPPED" />
+              <entry key="OrderApplication" value="STOPPED" />
+              <entry key="UserApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NotifyApplication">
+  <component name="RunManager" selected="Application.OrderApplication">
     <configuration name="EurekaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.kaf.eureka.EurekaApplication" />
       <module name="eureka" />
@@ -160,6 +158,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.kaf.order.OrderApplication" />
+      <module name="order" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.kaf.order.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.kaf.user.UserApplication" />
       <module name="user" />
@@ -169,21 +180,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="user" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.kaf.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.kaf.user" />
-      <option name="MAIN_CLASS_NAME" value="com.example.kaf.user.UserApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserApplication" />
         <item itemvalue="Application.GatewayApplication" />
-        <item itemvalue="Application.NotifyApplication" />
+        <item itemvalue="Application.UserApplication" />
+        <item itemvalue="Application.OrderApplication" />
         <item itemvalue="Application.EurekaApplication" />
-        <item itemvalue="JUnit.UserApplicationTests" />
+        <item itemvalue="Application.NotifyApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776341654802</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implement password hashing and add security configuration">
+      <option name="closed" value="true" />
+      <created>1776347250273</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1776347250273</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,7 +295,8 @@
     <MESSAGE value="Add api-gateway" />
     <MESSAGE value="Add user service" />
     <MESSAGE value="Add user endpoints and validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add user endpoints and validation" />
+    <MESSAGE value="Implement password hashing and add security configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement password hashing and add security configuration" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
