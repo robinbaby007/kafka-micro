@@ -25,6 +25,10 @@ public class GatewayApplication {
                         .path("/api/logs/**")
                         .uri("lb://NOTIFY"))
 
+                .route("user-service", r -> r
+                        .path("/api/auth/**")
+                        .uri("lb://USER"))
+
                 .build();
     }
 }
