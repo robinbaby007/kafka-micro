@@ -17,6 +17,7 @@
         <module>notify</module>
         <module>eureka</module>
         <module>gateway</module>
+        <module>user</module>
     </modules>
 	<name/>
 	<description/>

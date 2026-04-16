@@ -40,6 +40,26 @@ services:
     networks:
     - order_network
 
+  user-mysql: # ← NEW SERVICE
+    image: mysql:8.0
+    container_name: user_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: user_db                  # ← Different DB name
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3308:3306"                           # ← WHY 3307? Host port must be unique! 3306 already taken by order_mysql
+    volumes:
+      - user_mysql_data:/var/lib/mysql          # ← WHY separate volume? Same reason: isolation. Don't share disk space.
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - order_network
+
   zookeeper:
    image: confluentinc/cp-zookeeper:7.7.0
    container_name: zookeeper
@@ -71,6 +91,7 @@ services:
 volumes:
   mysql_data:
   log_mysql_data:
+  user_mysql_data:
 
 networks:
   order_network:
