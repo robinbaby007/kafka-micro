@@ -3,6 +3,7 @@ package com.example.kaf.user.service;
 import com.example.kaf.user.models.User;
 import com.example.kaf.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
 
     public void signup(String email, String password) {
@@ -22,18 +24,18 @@ public class UserService {
 
         User user = new User();
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));  // Hash password before storing
         user.setEnabled(true);
 
         userRepository.save(user);
     }
 
-    public String login(String email, String password) {
+    public String login(String email, String rawPassword) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        // In a real application, use passwordEncoder.matches(password, user.getPassword())
-        if (!user.getPassword().equals(password)) {
-            throw new RuntimeException("Invalid credentials");
+
+        if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+            throw new RuntimeException("Invalid email or password");
         }
         // Returning a dummy token for demonstration
         return "dummy-jwt-token-for-" + email;

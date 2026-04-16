@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eee9907-ed4b-4a4e-ae0b-38cd02a2866d" name="Changes" comment="Add user service">
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/controller/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/models/AuthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/models/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/models/SignupRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="3eee9907-ed4b-4a4e-ae0b-38cd02a2866d" name="Changes" comment="Add user endpoints and validation">
+      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notify/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/notify/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/order/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/user/mvnw.cmd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +96,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.kaf.gateway.security" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -113,7 +113,7 @@
             <map>
               <entry key="EurekaApplication" value="STOPPED" />
               <entry key="GatewayApplication" value="STOPPED" />
-              <entry key="UserApplication" value="STOPPED" />
+              <entry key="UserApplication" value="FAILED" />
             </map>
           </value>
         </entry>
@@ -263,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776336466416</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add user endpoints and validation">
+      <option name="closed" value="true" />
+      <created>1776341654802</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1776341654802</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,7 +290,8 @@
     <MESSAGE value="Add service discovery" />
     <MESSAGE value="Add api-gateway" />
     <MESSAGE value="Add user service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add user service" />
+    <MESSAGE value="Add user endpoints and validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add user endpoints and validation" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
