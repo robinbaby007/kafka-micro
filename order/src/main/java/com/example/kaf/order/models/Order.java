@@ -23,6 +23,9 @@ public class Order {
     private String orderId; // UUID as String
 
     @Column(nullable = false)
+    private String email;  // User email from X-User-Email header
+
+    @Column(nullable = false)
     private String customerName;
 
     @Column(nullable = false)

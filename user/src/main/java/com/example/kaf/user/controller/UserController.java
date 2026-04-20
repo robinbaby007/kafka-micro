@@ -38,10 +38,12 @@ public class UserController {
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         try {
             String token = userService.login(request.getEmail(), request.getPassword());
+            System.out.println("AppStatus" + "Login");
             return ResponseEntity.ok(
                     new AuthResponse(token, "Login successful", request.getEmail())
             );
         } catch (Exception e) {
+            System.out.println("AppStatus" + "Login error");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new AuthResponse(null, "Invalid email or password", request.getEmail()));
         }

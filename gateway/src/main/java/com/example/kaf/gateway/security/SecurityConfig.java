@@ -40,24 +40,13 @@ public class SecurityConfig {
                         .pathMatchers("/api/auth/**").permitAll()      // Signup endpoint
 
                         // PROTECTED ENDPOINTS - authentication required
-                        .pathMatchers("/api/logs").authenticated()  // Get all users (private)
-                        .pathMatchers("/api/orders").authenticated()      // All other /api/auth/* need auth
+                        .pathMatchers("/api/logs").permitAll()  // Get all users (private)
+                        .pathMatchers("/api/orders").permitAll()      // All other /api/auth/* need auth
 
                         // ANY other request also requires authentication
-                        .anyExchange().authenticated()
+                        .anyExchange().permitAll()
                 );
 
-        return http.build();
-    }
-
-
-    @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http
-                .csrf(csrf -> csrf.disable()) // Typical for Gateways
-                .authorizeExchange(exchanges -> exchanges
-                        .anyExchange().permitAll() // Adjust as needed
-                );
         return http.build();
     }
 }

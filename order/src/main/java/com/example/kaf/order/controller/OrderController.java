@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -18,15 +19,44 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<OrderResponse> createOrder(
+    public ResponseEntity<?> createOrder(
+            @RequestHeader(value = "X-User-Email", required = false) String userEmail,
             @RequestBody CreateOrderRequest request) {
-        OrderResponse response = orderService.createOrder(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        if (isAuthError(userEmail)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(getAuthErrorResponse());
+        }
+        OrderResponse response = orderService.createOrder(request,userEmail);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(response);
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderResponse>> getAllOrders() {
-        List<OrderResponse> response = orderService.getAllOrders();
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+    public ResponseEntity<?> getAllOrders(
+            @RequestHeader(value = "X-User-Email", required = false) String userEmail
+    ) {
+        if (isAuthError(userEmail)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(getAuthErrorResponse());
+        }
+        List<OrderResponse> response = orderService.findAllByEmail(userEmail);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(response);
+    }
+
+    private Boolean isAuthError(String userEmail) {
+        if (userEmail == null || userEmail.isEmpty()) {
+            String errorMessage = "Unauthorized: User email not found in X-User-Email header";
+            System.out.println(errorMessage);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private HashMap<String,String> getAuthErrorResponse(){
+        HashMap<String, String> errorMap = new HashMap<>();
+        errorMap.put("error", "Unauthorized: User email not found in X-User-Email header");
+        return errorMap;
     }
 }

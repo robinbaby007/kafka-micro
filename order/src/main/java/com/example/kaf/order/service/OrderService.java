@@ -19,13 +19,14 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderProducer OrderProducer;
 
-    public OrderResponse createOrder(CreateOrderRequest request) {
+    public OrderResponse createOrder(CreateOrderRequest request, String email) {
         // Generate unique order ID
         String orderId = UUID.randomUUID().toString();
 
         // Create entity
         Order order = new Order();
         order.setOrderId(orderId);
+        order.setEmail(email);
         order.setCustomerName(request.getCustomerName());
         order.setTotalAmount(request.getTotalAmount());
         order.setStatus("PENDING");
@@ -54,8 +55,20 @@ public class OrderService {
         );
     }
 
-    public List<OrderResponse> getAllOrders() {
+    /*public List<OrderResponse> getAllOrders() {
         return orderRepository.findAll().stream()
+                .map(order -> new OrderResponse(
+                        order.getOrderId(),
+                        order.getCustomerName(),
+                        order.getTotalAmount(),
+                        order.getStatus(),
+                        order.getCreatedAt()
+                ))
+                .toList();
+    }*/
+
+    public List<OrderResponse> findAllByEmail(String email) {
+        return orderRepository.findByEmail(email).stream()
                 .map(order -> new OrderResponse(
                         order.getOrderId(),
                         order.getCustomerName(),
