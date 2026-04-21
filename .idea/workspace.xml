@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eee9907-ed4b-4a4e-ae0b-38cd02a2866d" name="Changes" comment="Implement password hashing and add security configuration">
+    <list default="true" id="3eee9907-ed4b-4a4e-ae0b-38cd02a2866d" name="Changes" comment="Add email based order saving. &#10;&#10;NOTE:- All end points permitted now">
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/security/JwtTokenProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/GatewayApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/kaf/gateway/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/repository/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/example/kaf/order/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user/src/main/java/com/example/kaf/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +27,7 @@
     </persistenceIdMap>
   </component>
   <component name="CopilotUserSelectedChatMode">
-    <option name="chatModeId" value="Ask" />
+    <option name="chatModeId" value="Agent" />
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
@@ -63,29 +65,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.EurekaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.NotifyApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.OrderApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.NotifyApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/robin.baby/Downloads/PROJECTS/shopping-kafka/user/src&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.mcp.McpConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EurekaApplication.executor": "Run",
+    "Application.GatewayApplication.executor": "Run",
+    "Application.NotifyApplication.executor": "Run",
+    "Application.OrderApplication.executor": "Run",
+    "Application.UserApplication.executor": "Run",
+    "JUnit.NotifyApplicationTests.executor": "Run",
+    "JUnit.UserApplicationTests.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/robin.baby/Downloads/PROJECTS/shopping-kafka/user/src",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.mcp.McpConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/user/src" />
@@ -114,7 +116,7 @@
               <entry key="GatewayApplication" value="STOPPED" />
               <entry key="NotifyApplication" value="STOPPED" />
               <entry key="OrderApplication" value="STOPPED" />
-              <entry key="UserApplication" value="FAILED" />
+              <entry key="UserApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -206,11 +208,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OrderApplication" />
         <item itemvalue="Application.GatewayApplication" />
+        <item itemvalue="Application.NotifyApplication" />
+        <item itemvalue="Application.OrderApplication" />
         <item itemvalue="Application.UserApplication" />
         <item itemvalue="Application.EurekaApplication" />
-        <item itemvalue="Application.NotifyApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776347250273</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add email based order saving. &#10;&#10;NOTE:- All end points permitted now">
+      <option name="closed" value="true" />
+      <created>1776698008376</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1776698008376</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,7 +309,8 @@
     <MESSAGE value="Add user service" />
     <MESSAGE value="Add user endpoints and validation" />
     <MESSAGE value="Implement password hashing and add security configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement password hashing and add security configuration" />
+    <MESSAGE value="Add email based order saving. &#10;&#10;NOTE:- All end points permitted now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add email based order saving. &#10;&#10;NOTE:- All end points permitted now" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

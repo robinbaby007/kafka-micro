@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .pathMatchers("/api/orders").permitAll()      // All other /api/auth/* need auth
 
                         // ANY other request also requires authentication
-                        .anyExchange().permitAll()
+                        .anyExchange().authenticated()
                 );
 
         return http.build();

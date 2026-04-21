@@ -2,6 +2,7 @@ package com.example.kaf.user.service;
 
 import com.example.kaf.user.models.User;
 import com.example.kaf.user.repository.UserRepository;
+import com.example.kaf.user.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
 
     public void signup(String email, String password) {
@@ -37,8 +39,8 @@ public class UserService {
         if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
             throw new RuntimeException("Invalid email or password");
         }
-        // Returning a dummy token for demonstration
-        return "dummy-jwt-token-for-" + email;
+        // Generate and return JWT token
+        return jwtTokenProvider.generateToken(email);
     }
 
     public List<User> getAllUsers(){
